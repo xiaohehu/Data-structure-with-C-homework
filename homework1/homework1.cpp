@@ -15,19 +15,19 @@ void printMatrix (int *matrix, int count) {
 
 int calculateDeterminant (int *matrix, int count) {
 	int result = 0;
+	// If there is only one number in matrix that number is determinant
 	if (count == 1) {
 		result = *matrix;
-		//cout << endl << endl;
-		//cout << "The determinat is:" << result << endl;
 		return result;
 	}
+	// If the size of matrix is 2 then do the calculation
 	if (count == 2) {
 		result = *(matrix) * *(matrix + 2 + 1) - *(matrix + 1) * *(matrix + 2);
-		//cout << endl << endl;
-		//cout << "The determinat is:" << result << endl;
+
 		return result;
 	}
 	else {
+		// If the size of matrix is greater than 2 then do the recursion
 		// Get the first row of matrix
 		int firstRow[count];
 		int nextLevel = count - 1;
@@ -35,7 +35,7 @@ int calculateDeterminant (int *matrix, int count) {
 		for (int i = 0; i < count; i++) {
 			firstRow[i] = *(matrix + i);
 		}
-		// 递归一下
+		// Create the next level matrix and use it to calculate the determinant
 		for (int i = 0; i < count; i++) {
 			int prefix = 0;
 			if (i % 2 == 0) {
