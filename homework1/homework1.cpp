@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
 			for (int width = 0; width < level; width++) {
 				cout << "Please input No." << height + 1 << " row's No." << width + 1 << " element:" << endl;
 				cin >> input;
-				if (cin.good()) {
+				if (!cin.eof() && cin.good()) {
 					matrix[height][width] = input;
 				}
 				else {
