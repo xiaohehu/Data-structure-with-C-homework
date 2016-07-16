@@ -2,7 +2,27 @@
 
 using namespace std;
 
-void printMatrix (int *matrix, int count) {
+class MatrixDeterminant
+{
+	public:
+	MatrixDeterminant();
+	MatrixDeterminant(int*, int);
+	void printMatrxi();
+	int getDeterminant();
+	private:
+	int count;
+	int* matrix;
+	int calculateDeterminant(int* , int);
+};
+
+MatrixDeterminant::MatrixDeterminant(int* matrix_arg, int count_arg) {
+	count = count_arg;
+	matrix = matrix_arg;
+}
+
+void MatrixDeterminant::printMatrxi() {
+	cout << endl;
+	cout << "The input matrix is: " << endl;
 	for (int height = 0; height < count; height++) {
 		cout << "| ";
 		for (int width = 0; width < count; width++) {
@@ -12,8 +32,10 @@ void printMatrix (int *matrix, int count) {
 	}
 	cout << endl;
 }
-
-int calculateDeterminant (int *matrix, int count) {
+int MatrixDeterminant::getDeterminant() {
+	return calculateDeterminant(matrix, count);
+}
+int MatrixDeterminant::calculateDeterminant(int *matrix, int count) {
 	int result = 0;
 	// If there is only one number in matrix that number is determinant
 	if (count == 1) {
@@ -23,7 +45,6 @@ int calculateDeterminant (int *matrix, int count) {
 	// If the size of matrix is 2 then do the calculation
 	if (count == 2) {
 		result = *(matrix) * *(matrix + 2 + 1) - *(matrix + 1) * *(matrix + 2);
-
 		return result;
 	}
 	else {
@@ -55,7 +76,7 @@ int calculateDeterminant (int *matrix, int count) {
 					}
 				}
 			}
-			
+		
 			result = result + prefix * firstRow[i] * calculateDeterminant(nextMatrix[0], count - 1);
 		}
 		return result;
@@ -67,7 +88,7 @@ int main(int argc, char *argv[]) {
 	int level;
 	cout << "Please in put number of elements on a side:" << endl;
 	cin >> level;
-	if (cin.good()) {
+	if (!cin.eof() && cin.good()) {
 		// Create the 2 dimentional array
 		int matrix[level][level];
 		int input;
@@ -86,13 +107,11 @@ int main(int argc, char *argv[]) {
 				}
 			}
 		}
-		cout << endl;
-		cout << "The input matrix is:" << endl;
-		printMatrix (matrix[0], level);
-		cout << endl;
-		
-		cout << "The result is:" << endl;
-		cout << calculateDeterminant(matrix[0], level);
+	
+	MatrixDeterminant *determinant = new MatrixDeterminant(matrix[0], level);
+	determinant->printMatrxi();
+	int ans = determinant->getDeterminant();
+	cout << ans << endl;
 	}
 	else {
 		return 0;
