@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-
+// Create the class for determinant of matrix
 class MatrixDeterminant
 {
 	public:
@@ -15,11 +15,12 @@ class MatrixDeterminant
 	int calculateDeterminant(int* , int);
 };
 
+// Method to initiate the object
 MatrixDeterminant::MatrixDeterminant(int* matrix_arg, int count_arg) {
 	count = count_arg;
 	matrix = matrix_arg;
 }
-
+// Print out the matrix in a proper way
 void MatrixDeterminant::printMatrxi() {
 	cout << endl;
 	cout << "The input matrix is: " << endl;
@@ -32,9 +33,12 @@ void MatrixDeterminant::printMatrxi() {
 	}
 	cout << endl;
 }
+// Call function "calculateDeterminant" to do the work
 int MatrixDeterminant::getDeterminant() {
 	return calculateDeterminant(matrix, count);
 }
+// Function to calculate the determinant.
+// If the level of the matrix is greater than 2 then use recursion
 int MatrixDeterminant::calculateDeterminant(int *matrix, int count) {
 	int result = 0;
 	// If there is only one number in matrix that number is determinant
