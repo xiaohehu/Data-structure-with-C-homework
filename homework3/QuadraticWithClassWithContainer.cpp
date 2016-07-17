@@ -49,6 +49,54 @@ double Quadratic::radicalOver2A () {
 	return - sqrt(disc)/(2*a);  // fix sign-reversal bug
 	}
 
+
+// Added Container class here to hide arguments & function info from class Quadratic
+
+class calculationContainer {
+	public:
+	// Defalut constructor
+	calculationContainer();
+	// Print out the result
+	void printAns();
+	// Get required argument for class Quadratic
+	void setRequiredArg (int, int, int);
+	private:
+	int container_a;
+	int container_b;
+	int container_c;
+};
+
+calculationContainer::calculationContainer () {
+	 container_a = container_b = container_c = 0;
+	
+}
+
+void calculationContainer::setRequiredArg (int A, int B, int C) {
+	container_a = A;
+	container_b = B;
+	container_c = C;
+}
+
+void calculationContainer::printAns () {
+	// Use class Quadratic to create the object
+	Quadratic Q (container_a, container_b, container_c);
+	
+	int Disc = 0;
+	
+	Disc = Q.Discrim();
+	if (Disc < 0) {
+		cout << "No real roots" << endl;
+		}
+	else if (Disc == 0) {
+		cout << " One root: " << Q.bOver2A () << endl;
+		}
+	else { // If Disc > 0
+		cout << " Two Roots: " << Q.bOver2A () + Q.radicalOver2A ()
+		<< " and " << Q.bOver2A () - Q.radicalOver2A () << endl;
+		}
+}
+	
+
 // For use with MSVS Project put the main in a separate .cpp file with a name such 
 //  as TestQuadratic.cpp. Once the Quadratic.h and Quadratic.cpp codes have been 
 //  removed from this file, the heading at the top of this file will be just above
@@ -57,7 +105,6 @@ double Quadratic::radicalOver2A () {
 //  Quadratic code.
 int main () {
 	double a,b,c;
-	int Disc = 0;
 	// Please note: I try to put as much of the keyboard and terminal IO as possible
 	//  in the main or in non-class functions to keep clutter our of the class and
 	//  method definitions.
@@ -74,28 +121,11 @@ int main () {
 	// rather than as a specialized system command.
 	cin >> a >> b >> c;
 	if (!cin.eof() && cin.good() && a != 0) {
-		Quadratic Q (a, b, c); // Try to declare objects after data input is complete
-				// because setting up an object at runtime is an expensive operation.
-				
-				
-/* Put this part code into a container				
-				
-				
-		Disc = Q.Discrim();
-		if (Disc < 0) {
-			cout << "No real roots" << endl;
-			}
-		else if (Disc == 0) {
-			cout << " One root: " << Q.bOver2A () << endl;
-			}
-		else { // If Disc > 0
-			cout << " Two Roots: " << Q.bOver2A () + Q.radicalOver2A ()
-			<< " and " << Q.bOver2A () - Q.radicalOver2A () << endl;
-			}
-		}
-		
-*/		
-		
+		// Call the container class, create an object and set all required values
+		calculationContainer calculation;
+		calculation.setRequiredArg (a, b, c);
+		calculation.printAns();
+	}		
 	else
 		{if (!cin.eof()) {
 			if (!cin.good())
