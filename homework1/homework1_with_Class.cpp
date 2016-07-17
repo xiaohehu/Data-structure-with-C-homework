@@ -90,7 +90,7 @@ int MatrixDeterminant::calculateDeterminant(int *matrix, int count) {
 
 int main(int argc, char *argv[]) {
 	int level;
-	cout << "Please in put number of elements on a side:" << endl;
+	cout << "Please input dimention of the matrix you want to build:" << endl;
 	cin >> level;
 	if (!cin.eof() && cin.good()) {
 		// Create the 2 dimentional array
