@@ -56,43 +56,37 @@ class calculationContainer {
 	public:
 	// Defalut constructor
 	calculationContainer();
+	calculationContainer(int, int, int);
 	// Print out the result
 	void printAns();
 	// Get required argument for class Quadratic
 	void setRequiredArg (int, int, int);
 	private:
-	int container_a;
-	int container_b;
-	int container_c;
+	Quadratic *quadratic;
 };
 
 calculationContainer::calculationContainer () {
-	 container_a = container_b = container_c = 0;
-	
+	 quadratic = NULL;	
 }
 
-void calculationContainer::setRequiredArg (int A, int B, int C) {
-	container_a = A;
-	container_b = B;
-	container_c = C;
+calculationContainer::calculationContainer (int A, int B, int C) {
+	quadratic = new Quadratic(A, B, C);
 }
 
 void calculationContainer::printAns () {
-	// Use class Quadratic to create the object
-	Quadratic Q (container_a, container_b, container_c);
 	
 	int Disc = 0;
 	
-	Disc = Q.Discrim();
+	Disc = quadratic->Discrim();
 	if (Disc < 0) {
 		cout << "No real roots" << endl;
 		}
 	else if (Disc == 0) {
-		cout << " One root: " << Q.bOver2A () << endl;
+		cout << " One root: " << quadratic->bOver2A () << endl;
 		}
 	else { // If Disc > 0
-		cout << " Two Roots: " << Q.bOver2A () + Q.radicalOver2A ()
-		<< " and " << Q.bOver2A () - Q.radicalOver2A () << endl;
+		cout << " Two Roots: " << quadratic->bOver2A () + quadratic->radicalOver2A ()
+		<< " and " << quadratic->bOver2A () - quadratic->radicalOver2A () << endl;
 		}
 }
 	
@@ -122,8 +116,7 @@ int main () {
 	cin >> a >> b >> c;
 	if (!cin.eof() && cin.good() && a != 0) {
 		// Call the container class, create an object and set all required values
-		calculationContainer calculation;
-		calculation.setRequiredArg (a, b, c);
+		calculationContainer calculation(a, b, c);
 		calculation.printAns();
 	}		
 	else
