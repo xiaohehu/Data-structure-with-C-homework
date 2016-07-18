@@ -56,11 +56,10 @@ class calculationContainer {
 	public:
 	// Defalut constructor
 	calculationContainer();
+	// Create constructor with input value 
 	calculationContainer(int, int, int);
 	// Print out the result
 	void printAns();
-	// Get required argument for class Quadratic
-	void setRequiredArg (int, int, int);
 	private:
 	Quadratic *quadratic;
 };
