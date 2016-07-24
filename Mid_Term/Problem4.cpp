@@ -20,7 +20,7 @@ int getHeapMemory() {
 			}
 			else {
 				leak = true;
-				cout << "haha";
+				cout << "Memory leak."
 			}
 		}
 	} catch (bad_alloc & ex) {
