@@ -1,0 +1,3 @@
+Problem 2
+
+In my BagProg3B-container.cpp program, the values which are entered into the Nodes of the linked list are in LIFO (last in – first out) order.  Please rewrite the putANode method of the BagList class so that it inserts each individual entry in the list in ascending order according to the ASCII collating sequence.  A full listing of the ASCII collating sequence is available in Appendix A of our Main and Savitch Data Structures textbook.
