@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-int getHeapMemory() {
+int* getHeapMemory() {
 	try {
 		unsigned long int i = 1024;
 		unsigned long int sum = 0;
@@ -20,17 +20,18 @@ int getHeapMemory() {
 			}
 			else {
 				leak = true;
-				cout << "Memory leak."
+				cout << "Memory leak.";
+				return point;
 			}
 		}
 	} catch (bad_alloc & ex) {
 		cout << "Memory got leak.";
-		return 0;
+		return NULL;
 	}
 }
 
 
 int main(int argc, char *argv[]) {
-	return getHeapMemory();
-
+	getHeapMemory();
+	return 0;
 }
