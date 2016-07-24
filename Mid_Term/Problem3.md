@@ -1,0 +1,3 @@
+Problem 3
+
+In my Queue3A program there is no way to handle the person who wants to jump out of line to fetch some additional item which he or she has forgotten.  Please write a Remove method in the Node class which deletes the person from the Queue when he jumps out.  For this purpose, we must assign a person number to each person who enters the Queue.  This method must be supported by a method named RemoveJumpOut in the Queue container class and by a Remove case in the switch statement of the main().  Please be aware that Remove in this problem means to delete the person from the Queue who jumps out of the line.
