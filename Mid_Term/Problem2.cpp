@@ -14,6 +14,7 @@
 
 #include <string>
 #include <iostream>
+#include <numeric>
 using namespace std;
 
 //#include "Node.h"
@@ -62,16 +63,60 @@ private:
 };
 
 
-BagList::BagList () 
-	{ListPointer = NULL;}
+BagList::BagList () {
+	ListPointer = NULL;
+}
+
 bool BagList::putANode (string udata) {
 	bool x = false;
-	Node* temp1;
-	Node A;
-	temp1 = A.putNode (ListPointer, udata);
-	if (temp1 != NULL)
-	{	ListPointer = temp1;
-		x = true;
+	if (ListPointer == NULL) {
+		Node* temp1;
+		Node A;
+		temp1 = A.putNode (ListPointer, udata);
+		if (temp1 != NULL)
+		{	ListPointer = temp1;
+			x = true;
+		}
+		return x;
+		
+	}
+/*
+	Below part is the modify part.
+	Example test:
+		Add value to list as "1, 3, 5, 2"
+		The output list is in order "1, 2, 3, 5"
+*/
+	else {
+		if (ListPointer->getNodeData() >= udata) {
+			Node* temp2;
+			Node B;
+			temp2 = B.putNode (ListPointer, udata);
+			if (temp2 != NULL)
+			{	ListPointer = temp2;
+				x = true;
+			}
+		}
+		else {
+			Node *temp3;
+			Node C;
+			Node *current = ListPointer;
+			Node *tempCurrent = current;
+			while (current->getNextPointer()!=NULL &&
+			       current->getNodeData () < udata)
+			{	
+				tempCurrent = current;
+			    current = current->getNextPointer();
+			}
+			if (current->getNextPointer() == NULL && current->getNodeData () < udata) {
+				temp3 = C.putNode(NULL, udata);
+				current->putNextPointer(temp3);
+			}
+			else {
+				temp3 = C.putNode(tempCurrent->getNextPointer(), udata);
+				tempCurrent->putNextPointer(temp3);
+			}
+			x = true;
+		}
 	}
 	return x;
 }
