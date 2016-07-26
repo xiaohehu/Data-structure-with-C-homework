@@ -68,6 +68,8 @@ BagList::BagList () {
 }
 
 bool BagList::putANode (string udata) {
+	
+// If the item is first to add, then use the original method
 	bool x = false;
 	if (ListPointer == NULL) {
 		Node* temp1;
@@ -87,6 +89,10 @@ bool BagList::putANode (string udata) {
 		The output list is in order "1, 2, 3, 5"
 */
 	else {
+/* 
+	If the input value is greater than any one in list,
+	then add it to the last one
+*/
 		if (ListPointer->getNodeData() >= udata) {
 			Node* temp2;
 			Node B;
@@ -97,6 +103,10 @@ bool BagList::putANode (string udata) {
 			}
 		}
 		else {
+/*
+	Create 2 Node*, keep track of the current pointer postion,
+	then intert the input value to the correct position.
+*/
 			Node *temp3;
 			Node C;
 			Node *current = ListPointer;
