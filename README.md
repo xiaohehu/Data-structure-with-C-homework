@@ -8,3 +8,6 @@ Modify Array3.cpp file. Make the array added 1 element at a time and check if th
 
 ##Homework 3:
 Added container class to hide calculation function from the original class.
+
+##Homework 4:
+Get 10 nouns and 10 verbs, using rand() to create a sentence in format "The [noun1] [verb] [noun2].".
