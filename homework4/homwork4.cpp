@@ -117,4 +117,5 @@ void Container::makeSentence() {
 int main(int argc, char *argv[]) {
 	Container container;
 	container.makeSentence();
+	return 0;
 }
