@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+
 
 // Remove the magic number 10 (length of array)
 const int numOfWords = 10;
