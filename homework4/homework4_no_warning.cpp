@@ -43,25 +43,37 @@ void MakeSentences::getInputWords(string wordType) {
 // Go through the vector check if the word exists.
 bool MakeSentences::wordExist(string word, vector<string>checkedVector) {
 	bool exist = false;
-	for (string n : checkedVector) {
-		if (n == word) {
-			exist = true;
-			break;
-		}
-	}
+//	for (string n : checkedVector) {
+//		if (n == word) {
+//			exist = true;
+//			break;
+//		}
+//	}
+    for (int i = 0; i < checkedVector.size(); i++){
+        if (checkedVector[i] == word) {
+            exist = true;
+            break;
+        }
+    }
 	return exist;
 }
 
 void MakeSentences::printOutAllWords() {
 	cout << "All nouns:" << endl;
-	for (string n : noun) {
-		cout << n << endl;
-	}
+//	for (string n : noun) {
+//		cout << n << endl;
+//	}
+    for (int i = 0; i < numOfWords; i ++){
+        cout << noun[i] << endl;
+    }
 	
 	cout << "All verbs:" << endl;
-	for (string n : verb) {
-		cout << n << endl;
-	}
+//	for (string n : verb) {
+//		cout << n << endl;
+//	}
+    for (int j = 0; j < numOfWords; j++) {
+        cout << verb[i] << endl;
+    }
 }
 
 // According to the requirement, use rand() to generate random number,
