@@ -72,7 +72,7 @@ void MakeSentences::printOutAllWords() {
 //		cout << n << endl;
 //	}
     for (int j = 0; j < numOfWords; j++) {
-        cout << verb[i] << endl;
+        cout << verb[j] << endl;
     }
 }
 
