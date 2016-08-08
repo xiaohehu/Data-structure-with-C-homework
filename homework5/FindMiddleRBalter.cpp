@@ -38,7 +38,7 @@ void FindMiddle(int x, int y, int level, int nr, int round)
   return;
 }
 
-int main/Users/xiaohe/Documents/programming_study/BU/data_structure_c++/Sort_problem()
+int main()
 { int nr, level=0;
   cout << "Enter integer number of elements: ";
   if (cin >> nr)
