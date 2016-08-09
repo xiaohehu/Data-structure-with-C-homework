@@ -30,7 +30,6 @@ class BST { // Container for Binary Search Tree
 		Node* tree;
 		Node* foundNode;
 		string *names;
-		int arraySize;
 	private:
 		void treeDisplay(Node*, int);
 	public:
