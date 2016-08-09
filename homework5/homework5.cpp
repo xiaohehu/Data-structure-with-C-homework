@@ -27,15 +27,11 @@ class Node {
 
 class BST { // Container for Binary Search Tree
 	private:
-		Node* foundNode;
-		string *names;
-	private:
 		void treeDisplay(Node*, int);
 	public:
 		BST ();
 		Node* root;
 		void createTree(string *arr, int size, Node* node);
-		void createTree2(string *arr, int size);
 		void treeDisplayRoot();
 };
 BST::BST () { // Default Constructor
@@ -69,10 +65,6 @@ void BST::treeDisplay(Node* ref, int depth) {
 		 cout << "Right Child " << depth+1;
 		 treeDisplay(ref->getRH(), depth + 1);
 		}
-}
-
-void BST::createTree2(string *arr, int size) {
-	
 }
 
 void BST::createTree(string *arr, int size, Node* node) {
@@ -172,17 +164,6 @@ int main(int argc, char *argv[]) {
 	// Sort the array
 	sort(names,names + arraySize);
 	
-//	string temp;
-//	for (int i = 0; i < arraySize; i++) {
-//		for (int j = 0 ; j < arraySize - i; j++) {
-//			if (names[j] > names[j+1])
-//			{
-//			 temp = names[j];
-//			 names[j] = names[j+1];   
-//			 names[j+1] = temp;    
-//			}
-//		}
-//	}
 	// Print out the ordered array
 	cout << "The sorted array is: " << endl;
 	for (int i = 0; i < arraySize; i++) {
