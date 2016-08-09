@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -34,6 +35,7 @@ class BST { // Container for Binary Search Tree
 		BST ();
 		Node* root;
 		void createTree(string *arr, int size, Node* node);
+		void createTree2(string *arr, int size);
 		void treeDisplayRoot();
 };
 BST::BST () { // Default Constructor
@@ -69,34 +71,44 @@ void BST::treeDisplay(Node* ref, int depth) {
 		}
 }
 
+void BST::createTree2(string *arr, int size) {
+	
+}
+
 void BST::createTree(string *arr, int size, Node* node) {
+	int leftSize = size / 2;
+	int rightSize = 0;
+	if (size % 2) {
+		rightSize = size / 2;
+	}
+	else {
+		rightSize = size / 2 - 1;
+	}
+	
 	// Base case of recursion
 	// Only one node, compare value and insert
 	if (size < 2) {
 		string parentValue = node->getVal();
-		
+		string currentValue = *(arr + size / 2);
+		Node *newNode = new Node();
 		// If no root node, set value to root node and return
 		if (root == NULL) {
 			root = new Node ();
-			root->putVal(parentValue);
+			root->putVal(currentValue);
 			root->putLH(NULL);
 			root->putRH(NULL);
 			return;
 		}
 		
 		// Set leaf node to the tree
-		string currentValue = *(arr + size / 2);
-		Node *newNode = new Node();
+		newNode->putVal(currentValue);
+		newNode->setParent(node);
 		// Put left side
 		if (parentValue > currentValue) {
-			newNode->putVal(currentValue);
-			newNode->setParent(node);
 			node->putLH(newNode);
 		}
 		// Put right side
 		if (parentValue < currentValue) {
-			newNode->putVal(currentValue);
-			newNode->setParent(node);
 			node->putRH(newNode);
 		}
 		return;
@@ -104,16 +116,9 @@ void BST::createTree(string *arr, int size, Node* node) {
 	// If the tree's root node is not set yet, put the middle value to root
 	if (root == NULL) {
 		root = new Node ();
-		string putString = *(arr + size / 2);
-		root->putVal(putString);
-		int leftSize = size / 2;
-		int rightSize = 0;
-		if (size % 2) {
-			rightSize = size / 2;
-		}
-		else {
-			rightSize = size / 2 - 1;
-		}
+		string currentString = *(arr + size / 2);
+		root->putVal(currentString);
+
 		// Left side
 		createTree(arr, leftSize, root);
 		// Right side
@@ -125,25 +130,15 @@ void BST::createTree(string *arr, int size, Node* node) {
 		string parentValue = node->getVal();
 		string currentValue = *(arr + size / 2);
 		Node *newNode = new Node();
+		newNode->putVal(currentValue);
+		newNode->setParent(node);
 		// Put left side
 		if (parentValue > currentValue) {
-			newNode->putVal(currentValue);
-			newNode->setParent(node);
 			node->putLH(newNode);
 		}
 		// Put right side
 		if (parentValue < currentValue) {
-			newNode->putVal(currentValue);
-			newNode->setParent(node);
 			node->putRH(newNode);
-		}
-		int leftSize = size / 2;
-		int rightSize = 0;
-		if (size%2) {
-			rightSize = size/2;
-		}
-		else {
-			rightSize = size/2 - 1;
 		}
 		// Left side
 		createTree(arr, leftSize, newNode);
@@ -175,17 +170,19 @@ int main(int argc, char *argv[]) {
 	int arraySize = sizeof(names)/sizeof(names[0]);
 	
 	// Sort the array
-	string temp;
-	for (int i = 0; i < arraySize; i++) {
-		for (int j = 0 ; j < arraySize - i; j++) {
-			if (names[j] > names[j+1])
-			{
-			 temp = names[j];
-			 names[j] = names[j + 1];   
-			 names[j + 1] = temp;    
-			}
-		}
-	}
+	sort(names,names + arraySize);
+	
+//	string temp;
+//	for (int i = 0; i < arraySize; i++) {
+//		for (int j = 0 ; j < arraySize - i; j++) {
+//			if (names[j] > names[j+1])
+//			{
+//			 temp = names[j];
+//			 names[j] = names[j+1];   
+//			 names[j+1] = temp;    
+//			}
+//		}
+//	}
 	// Print out the ordered array
 	cout << "The sorted array is: " << endl;
 	for (int i = 0; i < arraySize; i++) {
