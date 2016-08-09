@@ -26,8 +26,6 @@ class Node {
 
 class BST { // Container for Binary Search Tree
 	private:
-		
-		Node* tree;
 		Node* foundNode;
 		string *names;
 	private:
@@ -39,7 +37,7 @@ class BST { // Container for Binary Search Tree
 		void treeDisplayRoot();
 };
 BST::BST () { // Default Constructor
-	root = tree = NULL; 
+	root = NULL; 
 } 
 
 void BST::treeDisplayRoot() {
@@ -107,7 +105,6 @@ void BST::createTree(string *arr, int size, Node* node) {
 	if (root == NULL) {
 		root = new Node ();
 		string putString = *(arr + size / 2);
-		cout << putString << endl;
 		root->putVal(putString);
 		int leftSize = size / 2;
 		int rightSize = 0;
@@ -159,7 +156,8 @@ void BST::createTree(string *arr, int size, Node* node) {
 
 int main(int argc, char *argv[]) {
 	// Init the sample data
-	string names[13] = {"William", 
+	string names[13] = {
+						"William", 
 						"Ben", 
 						"Edward", 
 						"Kevin", 
@@ -171,18 +169,20 @@ int main(int argc, char *argv[]) {
 						"Rongjuan", 
 						"Ofer", 
 						"Steve",
-						"Ian"};
+						"Ian"
+						};
 	// Get the size of sample array
 	int arraySize = sizeof(names)/sizeof(names[0]);
 	
 	// Sort the array
+	string temp;
 	for (int i = 0; i < arraySize; i++) {
 		for (int j = 0 ; j < arraySize - i; j++) {
 			if (names[j] > names[j+1])
 			{
-			string temp = names[j];
-			 names[j] = names[j+1];   
-			 names[j+1] = temp;    
+			 temp = names[j];
+			 names[j] = names[j + 1];   
+			 names[j + 1] = temp;    
 			}
 		}
 	}
