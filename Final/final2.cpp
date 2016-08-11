@@ -36,7 +36,9 @@ class HashTable {
 		void printHashTable();
 };
 HashTable::HashTable(){
-
+	for (int i = 0 ; i < MAX; i++) {
+		occupied[i] = false;
+	}
 }
 
 void HashTable::makeHashTable() {
