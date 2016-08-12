@@ -253,7 +253,7 @@ while (!cin.eof() && op != 'E' && op != 'e')  // build a binary tree in this whi
 /*
 	(3)
 	===============================
-	Add one more option here to the the population of the subtree 
+	Add one more option -- "Population of subtree"
 	===============================
 */
    cout << "(A)dd a node, display (T)ree, (S)how lists, display a (N)ode, (P)opulation of subtree,(E)xit: ";
